@@ -1,1 +1,3 @@
 # Elixir alias.
+
+alias Scraper
