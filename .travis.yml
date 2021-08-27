@@ -5,8 +5,13 @@ elixir:
 otp_release:
   - 22.3.3
 
+env:
+  - MIX_ENV=test
+
 script:
-  - coveralls.json
+  - mix format --check-formatted --dry-run
+  - mix credo --strict
+  - mix coveralls.json
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
