@@ -6,9 +6,7 @@ otp_release:
   - 22.3.3
 
 script:
-  - mix format --check-formatted --dry-run
-  - mix credo --strict
-  - mix coveralls.json
+  - MIX_ENV=test mix do compile --warnings-as-errors, coveralls.json
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
