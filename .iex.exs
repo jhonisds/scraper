@@ -1,3 +1,4 @@
 # Elixir alias.
 
-alias Scraper
+alias Scraper.Review, as: Review
+alias Scraper.Output, as: Output

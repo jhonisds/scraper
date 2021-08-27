@@ -3,33 +3,42 @@ defmodule Scraper do
   Documentation for `Scraper`.
   """
 
+  alias Scraper.{Review, Output}
+
   @base_url "https://www.dealerrater.com/dealer/McKaig-Chevrolet-Buick-A-Dealer-For-The-People-dealer-reviews-23685/"
   @filter "/?filter=ONLY_POSITIVE"
   @regex_rating ~r/rating-\d\d/
 
   @doc """
-  Get rating.
+  List top three worst offenders.
 
   ## Examples
 
-      iex> Scraper.get_rating()
-      :world
+      iex> Scraper.list_offenders()
+      Top three worst offenders for a McKaig Chevrolet Buick
+
+      3 - [5.0]  I highly recommend McKaig in Gladwater !! Raymond Prazak... -- by Crystal Johnson
+
+      I highly recommend McKaig in Gladwater...
 
   """
 
-  def get_review(pages \\ 1, review \\ 3) do
+  def list_offenders(pages \\ 1, review \\ 3) do
     pages
     |> call()
     |> sort(review)
+    |> Output.display()
   end
 
-  def create_review(document) do
-    %{
+  def create(document) do
+    result = %{
       author: author(document),
       rating: rating(document),
       title: title(document),
       content: content(document)
     }
+
+    Review.create(result)
   end
 
   def author(document) do
@@ -103,7 +112,7 @@ defmodule Scraper do
           value =
             document
             |> Floki.find("div.review-entry")
-            |> Enum.map(&create_review/1)
+            |> Enum.map(&create/1)
 
           list ++ value
 
