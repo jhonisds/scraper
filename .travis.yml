@@ -8,7 +8,7 @@ otp_release:
 script:
   - mix format --check-formatted --dry-run
   - mix credo --strict
-  - mix coveralls.html
+  - mix test --cover
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
