@@ -1,8 +1,9 @@
+sudo: required
 language: elixir
 elixir:
-  - 1.12.2
+  - 1.11.2
 otp_release:
-  - 24.0.3
+  - 22.3.3
 
 script:
   - mix format --check-formatted --dry-run
