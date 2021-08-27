@@ -98,4 +98,15 @@ defmodule Scraper.Html do
 
     rating / 10
   end
+
+  def key_words do
+    [
+      "Best service",
+      "good experience",
+      "highly recommend",
+      "amazing",
+      "great person",
+      "awesome"
+    ]
+  end
 end

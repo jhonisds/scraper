@@ -35,6 +35,8 @@ defmodule Scraper do
   """
   def sort(review, number) do
     review
+    |> Enum.filter(&(String.length(&1.content) > 200))
+    |> Enum.filter(&String.contains?(&1.content, Html.key_words()))
     |> Enum.sort_by(&{&1.rating, String.length(&1.content)}, :desc)
     |> Enum.take(number)
   end

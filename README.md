@@ -14,13 +14,16 @@ The KGB has noticed a resurgence of overly excited reviews for a McKaig Chevrole
 
 Criteria used to define the main offenders, based on rating, content and keywords.
 
-| Data            | Description                              | Severity |
-| --------------- | ---------------------------------------- | -------- |
-| rating          | if a customer recommends the Dealer      | 1        |
-| content         | A general rating from the customer       | 2        |
-| good experience | A rating given for each Dealer's feature | 3        |
-| service highly  | Customer opinion                         | 4        |
-| team great      | Employees involved on deal               | 5        |
+| Data             | Description                               |
+| ---------------- | ----------------------------------------- |
+| rating           | The highest rating                        |
+| content          | Content length longer than 200 characters |
+| Best service     | Keyword                                   |
+| good experience  | Keyword                                   |
+| highly recommend | Keyword                                   |
+| amazing          | Keyword                                   |
+| great person     | Keyword                                   |
+| awesome          | Keyword                                   |
 
 ## Run
 
