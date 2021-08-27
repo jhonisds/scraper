@@ -1,0 +1,13 @@
+language: elixir
+elixir:
+  - 1.12.2
+otp_release:
+  - 24.0.3
+
+script:
+  - mix format --check-formatted --dry-run
+  - mix credo --strict
+  - mix coveralls.json
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

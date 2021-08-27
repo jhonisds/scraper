@@ -19,10 +19,7 @@ defmodule Scraper.Html do
         {:ok, %HTTPoison.Response{body: body}} ->
           {:ok, document} = Floki.parse_document(body)
 
-          value =
-            document
-            |> Floki.find("div.review-entry")
-            |> Enum.map(&create/1)
+          value = get_review_entry(document)
 
           list ++ value
 
@@ -33,7 +30,13 @@ defmodule Scraper.Html do
     |> List.flatten()
   end
 
-  defp create(document) do
+  defp get_review_entry(document) do
+    document
+    |> Floki.find("div.review-entry")
+    |> Enum.map(&create/1)
+  end
+
+  def create(document) do
     result = %{
       author: author(document),
       rating: rating(document),

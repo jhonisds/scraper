@@ -1,5 +1,7 @@
 # Coding Challenge: “A Dealer For the People”
 
+[![Build Status](https://app.travis-ci.com/jhonisds/scraper.svg?branch=main)](https://app.travis-ci.com/jhonisds/scraper) [![codecov](https://codecov.io/gh/jhonisds/blog/branch/main/graph/badge.svg?token=BZBYOE40LV)](https://codecov.io/gh/jhonisds/blog)
+
 The KGB has noticed a resurgence of overly excited reviews for a McKaig Chevrolet Buick, a dealership they have planted in the United States. In order to avoid attracting unwanted attention, you’ve been enlisted to scrape reviews for this dealership from [DealerRater.com ](https://www.dealerrater.com) and uncover the top three worst offenders of these overly positive endorsements.
 
 ## Features
@@ -8,7 +10,17 @@ The KGB has noticed a resurgence of overly excited reviews for a McKaig Chevrole
 - identifies the top three most “overly positive” endorsements.
 - outputs these three reviews to the console, in order of severity.
 
-## Criteria
+## Review Score
+
+Criteria used to define the main offenders, based on rating, content and keywords.
+
+| Data            | Description                              | Severity |
+| --------------- | ---------------------------------------- | -------- |
+| rating          | if a customer recommends the Dealer      | 1        |
+| content         | A general rating from the customer       | 2        |
+| good experience | A rating given for each Dealer's feature | 3        |
+| service highly  | Customer opinion                         | 4        |
+| team great      | Employees involved on deal               | 5        |
 
 ## Run
 
@@ -17,6 +29,9 @@ run the code:
 ```sh
 git clone https://github.com/jhonisds/scraper.git
 cd scraper
+mix deps.get
+
+
 iex -S mix
 
 iex(1)> Scraper.list_offenders
@@ -31,6 +46,36 @@ iex(1)> Scraper.list_offenders
 | `rating`  | The rating             |
 | `title`   | The review title       |
 | `content` | The content            |
+
+## Code quality
+
+To format and analyze the quality of the code, run:
+
+```sh
+mix quality
+```
+
+## Test Coverage
+
+Analyze test coverage, run:
+
+```sh
+mix test --cover
+```
+
+Generate html file `cover/excoveralls.html`:
+
+```sh
+mix coveralls.html
+```
+
+## Documentation
+
+To generate documentation of the modules and functions, open "html" docs at `doc/index.html`.
+
+```sh
+mix docs
+```
 
 ## Test
 
